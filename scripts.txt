@@ -1,0 +1,70 @@
+number check
+#!/bin/bash
+
+echo "Enter a number "
+read number
+
+if [ $number -gt 0 ]; then
+	echo "The number is positive"
+elif [ $number -lt 0 ]; then
+	echo "The number is negative"
+else
+	echo "the number is zero"
+fi
+
+check_divisibilty
+
+#!/bin/bash
+
+echo "Enter Number"
+read number
+
+if [ $((number % 5)) -eq 0 ] && [ $((number % 11)) -eq 0 ]; then
+	echo "The Number $number is divisible by both 5 and 11"
+else
+	 echo "The Number $number is not divisible"
+fi
+
+
+
+leap year
+
+#!/bin/bash
+
+echo "Enter a year: "
+read year
+
+if [ $(( year % 4 )) -eq 0 ]; then
+	if [ $(( year % 100 )) -eq 0 ]; then
+		if [ $(( year % 400 )) -eq 0 ]; then
+			echo "$year is a leap year"
+		else
+			echo "$year is NOT a leap year"
+		fi
+	else
+	   echo "Is a leap year"
+	fi
+else
+	echo "is a not leap year"
+fi
+
+
+pattern
+reverse
+
+#!/bin/bash
+
+for((i=5;i>0;i--))
+do
+    for((j=i;j>0;j--))  # Fix: Change 'j>=0' to 'j>0'
+    do
+        echo -ne "* "
+    done
+    echo -e ""
+done
+
+
+
+calculator
+
+
