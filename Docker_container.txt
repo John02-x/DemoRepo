@@ -27,6 +27,7 @@ sudo docker cp index.html containerName:/usr/local/apache2/htdocs
 
 
 
+
 //To Create Docker Image
 
 create directory
@@ -56,3 +57,70 @@ docker images
 now create container using this image
 
 docker run --name (container name) -p 8000:80 -d (image name).
+
+
+
+
+------------------------------------------------------------------------
+
+Step 1: Create a Directory and Java Program
+Open your terminal or command prompt.
+
+Create a directory named myapp:
+
+Copy code in terminal
+mkdir myapp
+cd myapp
+
+Create a Java program named calc.java inside the directory. Use any text editor to create the file:
+
+nano calc.java 
+
+Write the following Java code in calc.java:
+
+import java.util.Scanner;
+
+public class calc {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int num2 = scanner.nextInt();
+
+        System.out.println("Addition: " + (num1 + num2));
+        System.out.println("Multiplication: " + (num1 * num2));
+
+        scanner.close();
+    }
+}
+
+
+Step 2: Create a Dockerfile
+In the same directory, create a file named Dockerfile:
+
+nano Dockerfile
+
+Add the following content to the Dockerfile:
+
+FROM ubuntu
+RUN apt update -y
+RUN apt install default-jre -y
+RUN mkdir /myapp
+COPY calc.java /myapp/
+CMD ["/bin/java", "/myapp/calc.java"]
+
+
+Build the Docker Image
+
+docker build -t myapp .
+
+Once the build process finishes, check if the image was created:
+
+docker images
+
+Run the container using the created Docker image:
+
+docker run --rm -ti myapp
