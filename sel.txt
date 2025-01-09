@@ -1,0 +1,45 @@
+Assignment 
+Selenium
+
+Q.1. Create a selenium project. This project will first open cdac.in website. Then it will go to the microsoft.com. Then it will go to google.com. Then it will come back to microsoft. Then it will come back to cdac website. 
+
+public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://cdac.in");
+		Thread.sleep(5000);
+		driver.navigate().to("https://microsoft.com");
+		Thread.sleep(5000);
+		driver.navigate().to("https://google.com");
+		Thread.sleep(2000);
+		driver.navigate().back();
+		Thread.sleep(2000);
+		driver.navigate().back();
+	}
+
+
+
+
+Q.2. Create a selenium project. This project will first open the google website in the browser. Then it will open a new browser window and will open the mirosoft website. 
+
+
+	public static void main(String[] args) throws InterruptedException {
+
+driver.get("https://google.com");
+		Thread.sleep(2000);
+		driver.switchTo().newWindow(WindowType.WINDOW);
+		driver.get("https://microsoft.com");
+
+	}
+
+
+
+Q.2. Write a selenium project. It wiil open the yahoo.com. Then send a search for jenkins to the yahoo and display search results.
+	public static void main(String[] args) throws InterruptedException {
+
+		driver.get("https://yahoo.com");
+		WebElement element = driver.findElement(By.name("p"));
+		element.sendKeys("jenkins");
+		element.submit();
+}
+
