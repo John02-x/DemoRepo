@@ -1,0 +1,58 @@
+sudo apt update
+
+sudo apt install docker.io
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+docker ps
+
+docker ps -a
+
+sudo docker pull ubuntu or httpd (as needed)
+
+sudo docker run --name (nameof container) -p 8000:80 httpd   it will run on 8000 port
+
+//run this command if not started
+sudo docker start nameofContainer
+
+Now create index.html and copy it in apache2/htdocs directory  
+sudo docker cp index.html containerName:/usr/local/apache2/htdocs
+
+
+
+
+
+
+
+
+//To Create Docker Image
+
+create directory
+mkdir webapp1
+
+cd webapp1
+
+create index.html
+
+create Dockerfile
+
+add below code in Dockerfile and save it
+
+FROM httpd
+COPY index.html /usr/local/apache2/htdocs/
+
+
+build to add image
+
+docker build -t webapp1
+
+to check whether docker image is created or not 
+
+docker images
+
+
+now create container using this image
+
+docker run --name (container name) -p 8000:80 -d (image name).
